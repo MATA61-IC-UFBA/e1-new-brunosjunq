@@ -1,0 +1,16 @@
+Resposta exercício:
+
+Por que há diferença entre as entradas?
+
+Porque no programa do livro, para o arquivo "mywc.l", a implementação não é igual a do comando "wc" que o Linux utiliza.
+
+mywc.l:
+
+[a-zA-Z]+ { words++; chars += strlen(yytext); } \n { chars++; lines++; } . { chars++; }
+
+wc do Linux:
+
+[^ \t\n\r\f\v]+ { words++; chars += strlen(yytext); }
+
+Ao substituir essa seção de código no novo programa "mywc-linux.l", é possível obter as mesmas saídas, conforme arquivos "README-linux.output" e "READMEmywc-linux.output".
+
